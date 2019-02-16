@@ -26,14 +26,25 @@ class App extends Component {
 
     const data = await api_call.json();
 
-    this.setState({
-      temprature: data.main.temp,
-      city: data.name,
-      country: data.sys.country,
-      humidity: data.main.humidity,
-      description: data.weather[0].description,
-      error: 'undefined'
-    })
+    if (city && country) {
+      this.setState({
+        temprature: data.main.temp,
+        city: data.name,
+        country: data.sys.country + ' °C',
+        humidity: data.main.humidity+'%',
+        description: data.weather[0].description,
+        error: ''
+      })
+    } else {
+      this.setState({
+        temprature: undefined,
+        city: undefined,
+        country: undefined,
+        humidity: undefined,
+        description: undefined,
+        error: 'Please enter the value!'
+      })
+    }
   }
 
   render() {
