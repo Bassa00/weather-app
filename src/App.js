@@ -54,16 +54,16 @@ class App extends Component {
             <div className='container'>
               <div className='row'>
                 <div className='col-xs-5 title-container'>
-                <Title />
-                </div>
-                <div className="col-xs-7 form-container">
-                  <Form getWeather={this.getWeather} />
-                  <Weather 
-                    temprature={this.state.temprature}
-                    city={this.state.city}
-                    country={this.state.country}
-                    humidity={this.state.humidity} description={this.state.description} error={this.state.error}
-                  />
+                  <Title />
+                  <div className="col-xs-7 form-container">
+                    <Form getWeather={this.getWeather} />
+                    <Weather 
+                      temprature={this.state.temprature}
+                      city={this.state.city}
+                      country={this.state.country}
+                      humidity={this.state.humidity} description={this.state.description} error={this.state.error}
+                      />
+                  </div>
                 </div>
               </div>
             </div>
