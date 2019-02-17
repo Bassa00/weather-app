@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './App.css';
 import Title from './components/Title'
 import Form from './components/Form'
 import Weather from './components/Weather'
@@ -28,9 +27,9 @@ class App extends Component {
 
     if (city && country) {
       this.setState({
-        temprature: data.main.temp,
+        temprature: data.main.temp + ' °C',
         city: data.name,
-        country: data.sys.country + ' °C',
+        country: data.sys.country ,
         humidity: data.main.humidity+'%',
         description: data.weather[0].description,
         error: ''
@@ -49,14 +48,27 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <Title />
-        <Form getWeather={this.getWeather}/>
-        <Weather
-          temprature={this.state.temprature}
-          city={this.state.city}
-          country={this.state.country}
-          humidity={this.state.humidity} description={this.state.description} error={this.state.error} />
+      <div>
+        <div className='wrapper'>
+          <div className='main'>
+            <div className='container'>
+              <div className='row'>
+                <div className='col-xs-5 title-container'>
+                <Title />
+                </div>
+                <div className="col-xs-7 form-container">
+                  <Form getWeather={this.getWeather} />
+                  <Weather 
+                    temprature={this.state.temprature}
+                    city={this.state.city}
+                    country={this.state.country}
+                    humidity={this.state.humidity} description={this.state.description} error={this.state.error}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
